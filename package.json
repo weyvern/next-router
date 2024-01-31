@@ -1,7 +1,7 @@
 {
   "name": "@weyvern/next-router",
   "author": "Jorge Paul",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Utility library to create a router object to help exporting HTTP verb methods on NextJS 14 within the app router",
   "keywords": [
     "NextJS",
