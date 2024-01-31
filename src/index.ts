@@ -1,6 +1,6 @@
 import { NextHandler, NextCustomMiddleware, NextRequest, NextRouteParams } from '@/types';
 
-const nextAPIHandler = (...middlewares: NextCustomMiddleware[]) => {
+export const nextAPIHandler = (...middlewares: NextCustomMiddleware[]) => {
   return async (request: NextRequest, routes: NextRouteParams) => {
     try {
       let result: void | Response;

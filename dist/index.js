@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.nextAPIHandler = void 0;
 const nextAPIHandler = (...middlewares) => {
     return async (request, routes) => {
         try {
@@ -24,6 +25,7 @@ const nextAPIHandler = (...middlewares) => {
         }
     };
 };
+exports.nextAPIHandler = nextAPIHandler;
 class NextRouter {
     #middleware = [];
     #GET;
@@ -34,19 +36,19 @@ class NextRouter {
         this.#middleware.push(...middleware);
     }
     get(...handlers) {
-        this.#GET = nextAPIHandler(...this.#middleware, ...handlers);
+        this.#GET = (0, exports.nextAPIHandler)(...this.#middleware, ...handlers);
         return this;
     }
     post(...handlers) {
-        this.#POST = nextAPIHandler(...this.#middleware, ...handlers);
+        this.#POST = (0, exports.nextAPIHandler)(...this.#middleware, ...handlers);
         return this;
     }
     put(...handlers) {
-        this.#PUT = nextAPIHandler(...this.#middleware, ...handlers);
+        this.#PUT = (0, exports.nextAPIHandler)(...this.#middleware, ...handlers);
         return this;
     }
     delete(...handlers) {
-        this.#DELETE = nextAPIHandler(...this.#middleware, ...handlers);
+        this.#DELETE = (0, exports.nextAPIHandler)(...this.#middleware, ...handlers);
         return this;
     }
     handlers() {
