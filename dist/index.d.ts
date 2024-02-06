@@ -1,4 +1,4 @@
-import { NextCustomMiddleware, NextRequest, NextRouteParams } from '@/types';
+import { NextCustomMiddleware, NextRequest, NextRouteParams } from './types';
 export declare const nextAPIHandler: (...middlewares: NextCustomMiddleware[]) => (request: NextRequest, routes: NextRouteParams) => Promise<Response>;
 declare class NextRouter {
     #private;

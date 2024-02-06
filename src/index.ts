@@ -1,4 +1,4 @@
-import { NextHandler, NextCustomMiddleware, NextRequest, NextRouteParams } from '@/types';
+import { NextHandler, NextCustomMiddleware, NextRequest, NextRouteParams } from './types';
 
 export const nextAPIHandler = (...middlewares: NextCustomMiddleware[]) => {
   return async (request: NextRequest, routes: NextRouteParams) => {
