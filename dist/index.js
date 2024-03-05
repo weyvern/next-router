@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.nextAPIHandler = void 0;
+const types_1 = require("./types");
 const nextAPIHandler = (...middlewares) => {
     return async (request, routes) => {
         try {
@@ -21,6 +22,9 @@ const nextAPIHandler = (...middlewares) => {
         catch (e) {
             if (e instanceof Error) {
                 return Response.json({ error: e.message }, { status: 500 });
+            }
+            if (e instanceof types_1.ErrorHandler) {
+                return Response.json({ error: e.message }, { status: e.statusCode });
             }
         }
     };
