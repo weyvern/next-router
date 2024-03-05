@@ -1,4 +1,10 @@
-import { NextHandler, NextCustomMiddleware, NextRequest, NextRouteParams } from './types';
+import {
+  ErrorHandler,
+  NextHandler,
+  NextCustomMiddleware,
+  NextRequest,
+  NextRouteParams
+} from './types';
 
 export const nextAPIHandler = (...middlewares: NextCustomMiddleware[]) => {
   return async (request: NextRequest, routes: NextRouteParams) => {
@@ -20,6 +26,9 @@ export const nextAPIHandler = (...middlewares: NextCustomMiddleware[]) => {
     } catch (e: unknown) {
       if (e instanceof Error) {
         return Response.json({ error: e.message }, { status: 500 });
+      }
+      if (e instanceof ErrorHandler) {
+        return Response.json({ error: e.message }, { status: e.statusCode });
       }
     }
   };
