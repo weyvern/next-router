@@ -24,11 +24,11 @@ export const nextAPIHandler = (...middlewares: NextCustomMiddleware[]) => {
 
       if (result) return result;
     } catch (e: unknown) {
-      if (e instanceof Error) {
-        return Response.json({ error: e.message }, { status: 500 });
-      }
       if (e instanceof ErrorHandler) {
         return Response.json({ error: e.message }, { status: e.statusCode });
+      }
+      if (e instanceof Error) {
+        return Response.json({ error: e.message }, { status: 500 });
       }
     }
   };

@@ -20,11 +20,11 @@ const nextAPIHandler = (...middlewares) => {
                 return result;
         }
         catch (e) {
-            if (e instanceof Error) {
-                return Response.json({ error: e.message }, { status: 500 });
-            }
             if (e instanceof types_1.ErrorHandler) {
                 return Response.json({ error: e.message }, { status: e.statusCode });
+            }
+            if (e instanceof Error) {
+                return Response.json({ error: e.message }, { status: 500 });
             }
         }
     };
